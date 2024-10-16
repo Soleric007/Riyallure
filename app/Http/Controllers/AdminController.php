@@ -14,8 +14,13 @@ class AdminController extends Controller
     //
     public function dashboard()
     {
+        $orders = Order::with('items.product')->latest()->paginate(10);
         $user = Auth::user();
-        return view('admin.pages.dashboard', compact('user'));
+        $totalEarnings = Order::sum('total_amount');
+        $totalCustomers = count(User::all());
+        $totalProducts = count(Product::all());
+
+        return view('admin.pages.dashboard', compact('user', 'orders', 'totalEarnings', 'totalCustomers', 'totalProducts'));
     }
     public function createproduct()
     {
@@ -61,14 +66,14 @@ class AdminController extends Controller
         $product->delete();
         return redirect()->route('admin.products')->with('message', 'Product Removed Successfully');
     }
-    
+
     public function showorder()
     {
         $orders = Order::with('items.product')->latest()->paginate(10);
         // dd($orders);
         return view('admin.pages.orders', compact('orders'));
     }
-    
+
     public function showcustomers()
     {
         $users = User::paginate('10');
