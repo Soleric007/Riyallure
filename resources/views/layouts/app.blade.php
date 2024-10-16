@@ -38,8 +38,8 @@
 
 @include('user.sections.footer')
 
-<!-- Stelina Device Mobile Footer -->
-@include('user.sections.mobilefooter')
+
+
 <a href="#" class="backtotop">
     <i class="fa fa-angle-double-up"></i>
 </a>

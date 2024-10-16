@@ -26,7 +26,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="login-item">
                                         <h5 class="title-login">Register now</h5>
-                                        <form class="register" method="POST" action="{{ route('register') }}">
+                                        <form class="register" class="space-y-4" method="POST" action="{{ route('register') }}">
                                             @csrf
                                             <p class="form-row form-row-wide">
                                                 <label for="name" class="text">Your Full Name</label>
@@ -49,6 +49,12 @@
                                                 <input id="password" type="password" name="password" required
                                                     autocomplete="new-password" class="input-text">
                                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                            </p>
+                                            <p class="form-row form-row-wide">
+                                                <label for="password_confirmation" class="text">Confirm Password</label>
+                                                <input id="password_confirmation" type="password" name="password_confirmation" required
+                                                    autocomplete="new-password" class="input-text">
+                                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                                             </p>
                                             <p class="form-row">
                                                 <span class="inline">
